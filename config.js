@@ -1,17 +1,9 @@
 // REPLACE THIS VALUES WITH YOUR CONFIGURATIONS.
 
 module.exports = {
-    SERVER_URL: 'wws://devel.tabcontrol.com.br/ws',
-    CHAT_BUTTONID: '573f20000000LFf',
-    CHAT_DEPLOYMENTID: '572f20000000LF7',
-    CHAT_ORGANISATIONID: '00Df2000001IjhC'
+    SERVER_URL: 'wws://tabapi.tabcontrol.com.br/ws',
+    CHAT_APIID: '573f20000000LFf',
+    CHAT_APIKEY: '572f20000000LF7',
+    CHAT_BOTID: 'TABBOTDEV',
+    CHAT_QUEUEID: 'QUEUE_REFUND'
 }
-
-/*
-module.exports = {
-    SERVER_URL: 'https://d.la1-c2-ia5.salesforceliveagent.com/chat/rest/',
-    CHAT_BUTTONID: '573f20000000LFf',
-    CHAT_DEPLOYMENTID: '572f20000000LF7',
-    CHAT_ORGANISATIONID: '00Df2000001IjhC'
-}
-*/

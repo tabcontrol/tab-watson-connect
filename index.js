@@ -18,7 +18,7 @@ var app = express();
 var server = app.listen(PORT, '0.0.0.0', () => {
     console.log(`Listening to request on port ${PORT}`);
 });
-var conversation;
+var conversations;
 //Static Files
 app.use(express.static('public'))
 console.log('Received Init');
@@ -104,7 +104,7 @@ async function processEvent(event) {
 
 io.on('connection', function (socket) {
     console.log(`Connection Established ${socket.id}`);
-    conversation = [];
+    conversations = [];
     socket.on('initMsg', async () => {
         try {
             const sess = assistant.createSession({
@@ -125,7 +125,7 @@ io.on('connection', function (socket) {
 
     socket.on('botRequestMessage', async (data) => {
         console.log(IBMSessionId + '****');
-        conversation.push({'contactId': 'User01', 'message': {'text': data.message}});
+        conversations.push({'contactId': 'User01', 'message': {'text': data.message}});
 
         socket.emit('U_chat', data.message);
         let payload = {
@@ -143,8 +143,7 @@ io.on('connection', function (socket) {
             console.log('-----------');
 
             if (message.result.output.generic[0].response_type == 'text' && message.result.output.generic[0].response_type != 'option') {
-                conversation.push('Bot: ' + message.result.output.generic[0].text + '\n');
-                console.log(conversation);
+                conversations.push('Bot: ' + message.result.output.generic[0].text + '\n');
                 socket.emit('botResponse', message.result.output.generic[0].text);
 
             } else if (message.result.output.generic[0].response_type == 'option') {
@@ -152,8 +151,7 @@ io.on('connection', function (socket) {
                 var labelContent = '';
                 message.result.output.generic[0].options.forEach(item => { opts.push(item.label); labelContent += `\t ${item.label}` });
                 //conversation.push('Bot: ' + message.result.output.generic[0].text + '\n');
-                conversation.push(`Options => ${labelContent} \n`);
-                console.log(conversation);
+                conversations.push(`Options => ${labelContent} \n`);
                 socket.emit('botResponse', message.result.output.generic[0].title);
                 socket.emit('optns', opts);
                 console.log(JSON.stringify(opts));

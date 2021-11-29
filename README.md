@@ -1,26 +1,26 @@
-# IBM Watson-TABControl TCCX Agent-Connect
-- This is a simple Javascript app built using TABControl Chat WAMP API that helps you communicate between IBM Watson and TCCX Agent.
+# IBM Watson-TABControl CHAT API-Connect
+- This is a simple Javascript app built using TABControl Chat API that helps you communicate between IBM Watson and TCCX Agent.
 - Heroku acts as the orchestrator.
 
 ## Prerequisits:
 
-- TABControl Developer Account with TCCX Agent(Chat) Setup.
+- TABControl Developer Account with CHAT API Setup.
 - Heroku Account.
 - IBM Watson Account
 
 ## Demo
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/xKrZFhv1FLM/0.jpg)](https://www.youtube.com/watch?v=xKrZFhv1FLM)
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/xKrZFhv1MLF/0.jpg)](https://www.youtube.com/watch?v=xKrZFhv1MLF)
 
 
 ## Architecture
 
-![alt text](<https://i.imgur.com/HGjNQBx.png>)
+![alt text](<https://i.imgur.com/HGjNxBQ.png>)
 
 
 ## Installation:
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/sunnykeerthi/Watson-LA-Connect/tree/main)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/tabcontrol/tab-watson-connect/tree/main)
 
 ## Instructions:
 
@@ -32,20 +32,18 @@ Scroll down to Config Vars Section Click Reveal Config Vars and crate config var
 
 | Key | Value |
 | --- | --- |
-| CHAT_BUTTONID | LA Chat Button Id |
-| CHAT_DEPLOYMENTID | LA Chat Deployment Id (Not embeddded service deployment key) |
-| CHAT_ORGANISATIONID | Org Id |
-| SERVER_URL | Chat URL |
+| CHAT_APIID | Api Chat Id |
+| CHAT_APIKEY | Api Chat Key |
+| CHAT_BOTID | Api Chat Bot Id |
+| CHAT_QUEUEID | Api Chat Queue Id |
+| SERVER_URL | Server TABControl Chat URL |
 | WATSON_ASSISTANT_ID | IBM Watson Assistant Id |
 | WATSON_ASSISTANT_KEY | IBM Watson Assistant Key |
 | WATSON_ASSISTANT_URL | IBM Watson Assistant URL |
 
 
 # Where do I get these Details
-**Salesforce**
-- Chat Button Id - Set up -> Search Chat Buttons & Invitations -> Click your Chat button and grab the Id.
-- Chat Deployment Id - Set up -> Search Deployments -> Select Deployments under Chat -> Click your Deployment and grab the Id.
-- Chat Organisation Id - Set up -> Search Company Information -> And you get the *Chat API Endpoint*
+**TABControl**
 - Server URL - Set up -> Search Chat setting. And you get the *Chat API Endpoint*
 
 **IBM Watson** 

@@ -17,7 +17,7 @@
     "http-proxy-middleware": "^1.0.6",
     "ibm-watson": "^5.7.1",
     "socket.io": "^2.3.0",
-    "tabapi-client": "^1.5.2"
+    "tabapi-client": "^1.5.4"
   },
   "devDependencies": {
     "@types/autobahn": "^20.9.0",

@@ -2,13 +2,15 @@ const axios = require("axios");
 const apiEndpoints = require("./endpoints");
 const tabapi = require('./tabapi');
 
+const config = require('./config');
+
 var connection = null;
 
 const login = async () =>
   await connection
   .call('com.tabcontrol.api.access.login', {
-    'apiId': process.env.CHAT_BUTTONID,
-    'apiKey': process.env.CHAT_DEPLOYMENTID,
+    'apiId': config.CHAT_APIID,
+    'apiKey': config.CHAT_APIKEY,
   })
   .then((res) => res)
   .then((res) => {
@@ -66,8 +68,8 @@ const agentAvailability = async (token) =>
   await connection
   .call('com.tabcontrol.api.chat.agentAvailability', {
     token: token,
-    botId: process.env.CHAT_BUTTONID,
-    queueId: process.env.CHAT_DEPLOYMENTID,
+    botId: config.CHAT_BOTID,
+    queueId: config.CHAT_QUEUEID,
   })
   .then((res) => res)
   .then((res) => {
@@ -95,8 +97,8 @@ const startRequest = async (token, sessionKey, contact, headers) =>
   .call('com.tabcontrol.api.chat.startRequest', {
     token: token,
     sessionKey: sessionKey,
-    botId: process.env.CHAT_BUTTONID,
-    queueId: process.env.CHAT_DEPLOYMENTID,
+    botId: config.CHAT_BOTID,
+    queueId: config.CHAT_QUEUEID,
     contact: contact,
     headers: headers
   })
@@ -160,12 +162,13 @@ const sendMessage = async (token, sessionKey, contactId, text) =>
     };
   });
 
-const sendHistory = async (token, sessionKey, history) =>
+const sendHistory = async (token, sessionKey, contacts, conversations) =>
   await connection
   .call('com.tabcontrol.api.chat.sendHistory', {
       token: token,
       sessionKey: sessionKey,
-      history: history,
+      contacts: contacts,
+      conversations: conversations,
     }
   )
   .then((res) => {
@@ -206,7 +209,7 @@ const stopRequest = async (token, sessionKey, reason) =>
 async function main() {
     try {
         // Connect to TABAPI
-        connection = await tabapi.connect('wss://devel.tabcontrol.com.br/ws');
+        connection = await tabapi.connect('wss://tabapi.tabcontrol.com.br/ws');
 
     }
     catch (e) {
@@ -217,8 +220,8 @@ async function main() {
 main();  
 
 module.exports.login = login;
-module.exports.agentAvailability = agentAvailability;
 module.exports.initSession = initSession;
+module.exports.agentAvailability = agentAvailability;
 module.exports.subscribeSession = subscribeSession;
 module.exports.startRequest = startRequest;
 module.exports.stopRequest = stopRequest;
