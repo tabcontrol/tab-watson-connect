@@ -209,7 +209,7 @@ const stopRequest = async (token, sessionKey, reason) =>
 async function main() {
     try {
         // Connect to TABAPI
-        connection = await tabapi.connect('wss://tabapi.tabcontrol.com.br/ws');
+        connection = await tabapi.connect(config.SERVER_URL);
 
     }
     catch (e) {

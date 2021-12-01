@@ -1,7 +1,7 @@
 // REPLACE THIS VALUES WITH YOUR CONFIGURATIONS.
 
 module.exports = {
-    SERVER_URL: 'wws://tabapi.tabcontrol.com.br/ws',
+    SERVER_URL: 'wss://tabapi.tabcontrol.com.br/ws',
     CHAT_APIID: '573f20000000LFf',
     CHAT_APIKEY: '572f20000000LF7',
     CHAT_BOTID: 'TABBOTDEV',
